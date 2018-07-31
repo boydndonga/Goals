@@ -8,8 +8,8 @@ import { Component } from '@angular/core';
 export class AppComponent {
   goals: string[];
 
-  constructor(){
+  constructor() {
 
-    this.goals = ["Watch Finding Nemo","Buy Cookies","Get new phone case"];
+    this.goals = ['Watch Finding Nemo', 'Buy Cookies', 'Get new phone case'];
   }
 }
