@@ -1,6 +1,5 @@
-import { Goal } from './goal';
+// import { Goal } from './goal';
 import { Component } from '@angular/core';
-import {Goal} from './goal'
 
 @Component({
   selector: 'app-root',
