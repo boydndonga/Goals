@@ -1,6 +1,8 @@
+import { Quote } from './../quote-class/quote';
 import { AlertsService } from './../alert-service/alerts.service';
 import { GoalService } from './../goals/goal.service';
 import { Goals } from './../goals';
+import {HttpClient} from '@angular/common/http';
 // import { Goal } from './../goal';
 import { Component, OnInit } from '@angular/core';
 
@@ -11,6 +13,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./goal.component.css']
 })
 export class GoalComponent implements OnInit {
+  private http: HttpClient;
+  quote: Quote;
   goals = Goals;
   alertService: AlertsService;
   constructor(goalService: GoalService, alertService: AlertsService) {
@@ -40,10 +44,15 @@ export class GoalComponent implements OnInit {
 
 }
 
+
   ngOnInit() {
-    this.http.get('https://talaikis.com/api/quotes/random/').subscribe(data=>{
-      // Successful API request.
-  })
+    interface ApiResponse {
+      quote: string;
+      author: string;
+    }
+    this.http.get<ApiResponse>('https://talaikis.com/api/quotes/random/').subscribe(data => {
+      this.quote = new Quote(data.quote, data.author);
+  });
   }
 
 }
