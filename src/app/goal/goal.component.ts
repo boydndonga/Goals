@@ -2,13 +2,13 @@ import { Quote } from './../quote-class/quote';
 import { AlertsService } from './../alert-service/alerts.service';
 import { GoalService } from './../goals/goal.service';
 import { Goals } from './../goals';
-import {QuoteRequestService} from '../quote-http/quote-request.service';
+import {QuoteRequestService} from './../quote-http/quote-request.service';
 // import { Goal } from './../goal';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-goal',
-  providers: [GoalService],
+  providers: [GoalService, QuoteRequestService],
   templateUrl: './goal.component.html',
   styleUrls: ['./goal.component.css']
 })
@@ -42,7 +42,6 @@ export class GoalComponent implements OnInit {
     this.goals.push(goal);
 
 }
-
 
   ngOnInit() {
     this.quoteService.quoteRequest();
