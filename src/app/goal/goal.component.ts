@@ -1,3 +1,4 @@
+import { AlertsService } from './../alert-service/alerts.service';
 import { GoalService } from './../goals/goal.service';
 import { Goals } from './../goals';
 // import { Goal } from './../goal';
@@ -11,8 +12,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GoalComponent implements OnInit {
   goals = Goals;
-  constructor(goalService: GoalService) {
+  alertService: AlertsService;
+  constructor(goalService: GoalService, alertService: AlertsService) {
     this.goals = goalService.getGoals();
+    this.alertService = alertService;
      }
 
     toogleDetails(index) {
@@ -24,6 +27,7 @@ export class GoalComponent implements OnInit {
       const toDelete = confirm(`Are you sure you want to delete ${this.goals[index].name}`);
       if (toDelete) {
           this.goals.splice(index, 1);
+          this.alertService.alertMe('Goal deleted successfully');
       }
     }
   }
