@@ -1,3 +1,4 @@
+import { AlertsService } from './alert-service/alerts.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {FormsModule} from '@angular/forms';
@@ -22,7 +23,7 @@ import { GoalFormComponent } from './goal-form/goal-form.component';
     BrowserModule,
     FormsModule
   ],
-  providers: [],
+  providers: [AlertsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

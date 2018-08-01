@@ -1,6 +1,6 @@
 import { GoalService } from './../goals/goal.service';
 import { Goals } from './../goals';
-import { Goal } from './../goal';
+// import { Goal } from './../goal';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
