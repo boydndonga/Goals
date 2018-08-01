@@ -4,6 +4,7 @@ import {FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { NgProgressModule } from '@ngx-progressbar/core';
 import { NgProgressHttpModule } from '@ngx-progressbar/http';
+import { RouterModule, Routes } from '@angular/router';
 
 import { AlertsService } from './alert-service/alerts.service';
 
@@ -14,6 +15,13 @@ import { StrikethroughDirective } from './strikethrough.directive';
 import { DateCountPipe } from './date-count.pipe';
 import { GoalFormComponent } from './goal-form/goal-form.component';
 import { AboutComponent } from './about/about.component';
+
+
+const routes: Routes = [
+  {path: 'goals', component: GoalComponent},
+  {path: 'about', component: AboutComponent}
+];
+
 
 @NgModule({
   declarations: [
@@ -31,7 +39,8 @@ import { AboutComponent } from './about/about.component';
     FormsModule,
     HttpClientModule,
     NgProgressModule.forRoot(), // normal progress bar
-    NgProgressHttpModule // progress bar to load http requests
+    NgProgressHttpModule, // progress bar to load http requests
+    RouterModule.forRoot(routes),
   ],
   providers: [AlertsService],
   bootstrap: [AppComponent]
