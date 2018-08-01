@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
+import { NgProgressModule } from '@ngx-progressbar/core';
+import { NgProgressHttpModule } from '@ngx-progressbar/http';
 
 import { AlertsService } from './alert-service/alerts.service';
 
@@ -26,6 +28,8 @@ import { GoalFormComponent } from './goal-form/goal-form.component';
     BrowserModule,
     FormsModule,
     HttpClientModule,
+    NgProgressModule.forRoot(), // normal progress bar
+    NgProgressHttpModule // progress bar to load http requests
   ],
   providers: [AlertsService],
   bootstrap: [AppComponent]
