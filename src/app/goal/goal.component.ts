@@ -2,7 +2,7 @@ import { Quote } from './../quote-class/quote';
 import { AlertsService } from './../alert-service/alerts.service';
 import { GoalService } from './../goals/goal.service';
 import { Goals } from './../goals';
-import {HttpClient} from '@angular/common/http';
+import {QuoteRequestService} from '../quote-http/quote-request.service';
 // import { Goal } from './../goal';
 import { Component, OnInit } from '@angular/core';
 
@@ -16,7 +16,7 @@ export class GoalComponent implements OnInit {
   quote: Quote;
   goals = Goals;
   alertService: AlertsService;
-  constructor(goalService: GoalService, alertService: AlertsService, private http: HttpClient) {
+  constructor(goalService: GoalService, alertService: AlertsService, private quoteService: QuoteRequestService) {
     this.goals = goalService.getGoals();
     this.alertService = alertService;
      }
@@ -45,16 +45,8 @@ export class GoalComponent implements OnInit {
 
 
   ngOnInit() {
-    interface ApiResponse {
-      quote: string;
-      author: string;
-    }
-    this.http.get<ApiResponse>('https://talaikis.com/api/quotes/random/').subscribe(data => {
-      this.quote = new Quote(data.quote, data.author);
-  }, () => {
-        this.quote = new Quote('Never, never, never give up.', 'winston churchill');
-        console.log('Error occured ');
-      });
+    this.quoteService.quoteRequest();
+    this.quote = this.quoteService.quote;
   }
 
 }
