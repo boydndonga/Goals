@@ -1,5 +1,7 @@
 <h1>
   Welcome to
+</h1>
+
   <ul>
     <div *ngFor='let goal of goals; let i = index'>
       <li id="{{i}}" appStrikethrough>{{goal.name}}  due on {{goal.completeDate| dateCount}}</li>
@@ -10,4 +12,11 @@
     </div>
   </ul>
   <p *ngIf='goals.length > 5'>You have too many goals</p>
-</h1>
+
+  <div class="container">
+      <div class="row">
+          <app-goal-form></app-goal-form>
+      </div>
+  </div>
+
+
