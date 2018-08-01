@@ -13,11 +13,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./goal.component.css']
 })
 export class GoalComponent implements OnInit {
-  private http: HttpClient;
   quote: Quote;
   goals = Goals;
   alertService: AlertsService;
-  constructor(goalService: GoalService, alertService: AlertsService) {
+  constructor(goalService: GoalService, alertService: AlertsService, private http: HttpClient) {
     this.goals = goalService.getGoals();
     this.alertService = alertService;
      }
@@ -52,7 +51,10 @@ export class GoalComponent implements OnInit {
     }
     this.http.get<ApiResponse>('https://talaikis.com/api/quotes/random/').subscribe(data => {
       this.quote = new Quote(data.quote, data.author);
-  });
+  }, () => {
+        this.quote = new Quote('Never, never, never give up.', 'winston churchill');
+        console.log('Error occured ');
+      });
   }
 
 }

@@ -20,11 +20,12 @@ import { GoalFormComponent } from './goal-form/goal-form.component';
     StrikethroughDirective,
     DateCountPipe,
     GoalFormComponent,
-    HttpClientModule
+
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
   ],
   providers: [AlertsService],
   bootstrap: [AppComponent]
