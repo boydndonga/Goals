@@ -41,6 +41,9 @@ export class GoalComponent implements OnInit {
 }
 
   ngOnInit() {
+    this.http.get('https://talaikis.com/api/quotes/random/').subscribe(data=>{
+      // Successful API request.
+  })
   }
 
 }
