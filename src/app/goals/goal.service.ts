@@ -8,5 +8,12 @@ export class GoalService {
   getGoals() {
     return Goals;
   }
-  constructor() { }
+  getGoal(id) {
+    for (const goal of Goals) {
+        if (goal.id === id) {
+            return goal;
+        }
+    }
+  }
+  // constructor(){}
 }

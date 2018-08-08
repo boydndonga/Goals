@@ -12,10 +12,12 @@
   <ul>
     <div *ngFor='let goal of goals; let i = index'>
       <li id="{{i}}" appStrikethrough>{{goal.name}}  due on {{goal.completeDate| dateCount}}</li>
-      <button class="btn btn-primary" (click)='toogleDetails(i)'>Toogle Details</button>
-      <app-goal-details *ngIf="goal.showDescription" [goal]='goal'
+      <!-- <button class="btn btn-primary" (click)='toogleDetails(i)'>Toogle Details</button> -->
+      <button class="btn btn-primary" (click)=goToUrl(goal.id) >View Details</button>
+      <button class="btn btn-danger" (click) = 'completeGoal(i)'>delete</button>
+      <!-- <app-goal-details *ngIf="goal.showDescription" [goal]='goal'
         (isComplete) = 'completeGoal($event, i)'>
-      </app-goal-details>
+      </app-goal-details> -->
     </div>
   </ul>
   <p *ngIf='goals.length > 5'>You have too many goals</p>
