@@ -2,7 +2,7 @@ import { Router } from '@angular/router';
 import { Quote } from './../quote-class/quote';
 import { AlertsService } from './../alert-service/alerts.service';
 import { GoalService } from './../goals/goal.service';
-import { Goals } from './../goals';
+import { Goal } from './../goal';
 import {QuoteRequestService} from './../quote-http/quote-request.service';
 // import { Goal } from './../goal';
 import { Component, OnInit } from '@angular/core';
@@ -15,15 +15,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GoalComponent implements OnInit {
   quote: Quote;
-  goals = Goals;
+  goals: Goal[];
   alertService: AlertsService;
-  constructor(goalService: GoalService, alertService: AlertsService,
-     private quoteService: QuoteRequestService, private router: Router) {
-      this.goals = goalService.getGoals();
-      this.alertService = alertService;
-     }
 
-    toogleDetails(index) {
+  toogleDetails(index) {
       this.goals[index].showDescription = !this.goals[index].showDescription;
   }
 
@@ -34,9 +29,10 @@ export class GoalComponent implements OnInit {
           this.alertService.alertMe('Goal deleted successfully');
       }
   }
+
   goToUrl(id) {
     this.router.navigate(['/goals', id]);
-}
+  }
 
   addNewGoal(goal) {
     const goalLength = this.goals.length;
@@ -44,7 +40,15 @@ export class GoalComponent implements OnInit {
     goal.completeDate = new Date(goal.completeDate);
     this.goals.push(goal);
 
-}
+  }
+
+  constructor(goalService: GoalService, alertService: AlertsService,
+    private quoteService: QuoteRequestService, private router: Router) {
+     this.goals = goalService.getGoals();
+     this.alertService = alertService;
+  }
+
+
 
   ngOnInit() {
     this.quoteService.quoteRequest();

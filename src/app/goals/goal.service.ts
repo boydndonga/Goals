@@ -5,15 +5,21 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class GoalService {
+  constructor() {
+    // No code here
+  }
   getGoals() {
     return Goals;
   }
   getGoal(id) {
-    for (const goal of Goals) {
-        if (goal.id === id) {
+    try {
+      for (const goal of Goals) {
+        if (goal.id == id) {
             return goal;
         }
     }
+    } catch (error) {
+      console.log('no id found');
+    }
   }
-  // constructor(){}
 }
