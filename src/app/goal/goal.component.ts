@@ -4,7 +4,6 @@ import { AlertsService } from './../alert-service/alerts.service';
 import { GoalService } from './../goals/goal.service';
 import { Goal } from './../goal';
 import {QuoteRequestService} from './../quote-http/quote-request.service';
-// import { Goal } from './../goal';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
