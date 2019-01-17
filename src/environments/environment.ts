@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://talaikis.com/api/quotes/random/'
+ apiUrl: 'http://quotes.stormconsultancy.co.uk/random.json'
 };
 
 /*

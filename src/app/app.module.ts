@@ -34,7 +34,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    NgProgressModule.forRoot(), // normal progress bar
+    NgProgressModule, // normal progress bar
     NgProgressHttpModule, // progress bar to load http requests
     RoutingModule,
   ],
